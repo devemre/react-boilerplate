@@ -1,5 +1,5 @@
 import React from "react";
-import { Router, useNavigate, useRouteError } from "react-router-dom";
+import { useNavigate, useRouteError } from "react-router-dom";
 
 const Error = () => {
   const navigate = useNavigate();
@@ -11,7 +11,9 @@ const Error = () => {
       <h1 className="text-3xl">Oops!</h1>
       <p>Sorry, an unexpected error has occurred.</p>
       <p>
-        <i>{error.statusText || error.message}</i>
+        <i>
+          {error.status} {error.statusText || error.message}
+        </i>
       </p>
       <button
         className="border rounded-md px-4 py-2 hover:bg-blue-500 hover:text-white transition-all"

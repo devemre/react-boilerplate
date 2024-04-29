@@ -27,7 +27,7 @@ namespace UserStore {
   export const actions = userStoreSlice.actions;
   export const reducer = userStoreSlice.reducer;
   export const select = {
-    user: (state: AppStore.RootState) => state.user,
+    user: (state: AppStore.RootState) => state.user.user,
   };
 }
 

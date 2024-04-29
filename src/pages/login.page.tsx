@@ -2,10 +2,11 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
 
 import { fetchUser, loginUser } from "../services/auth.service";
-import http from "../http";
-import { useSelector, useStore } from "react-redux";
+import http, { setAuthorizationHeader } from "../http";
+import { useDispatch, useSelector, useStore } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import AppStore from "../store";
+import UserStore from "../store/slices/user-store.slice";
 
 interface FormValues {
   username: string;
@@ -13,18 +14,15 @@ interface FormValues {
 }
 
 const Login = () => {
-  const store = useStore();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const onSubmit = async (values: any) => {
     const response = await loginUser(values.username, values.password);
 
     if (response) {
-      localStorage.setItem("boilerplate_token", response.data.token);
-      http.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${response.data.token}`;
-      store.dispatch({ type: "user/setUser", payload: response.data });
+      setAuthorizationHeader(response.data.token);
+      dispatch(UserStore.actions.setUser(response.data));
       navigate("/dashboard");
     }
   };
