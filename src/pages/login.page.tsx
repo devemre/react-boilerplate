@@ -1,12 +1,12 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
 
-import { fetchUser, loginUser } from "../services/auth.service";
-import http, { setAuthorizationHeader } from "../http";
-import { useDispatch, useSelector, useStore } from "react-redux";
+import { loginUser } from "../services/auth.service";
+import { setAuthorizationHeader } from "../http";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import AppStore from "../store";
 import UserStore from "../store/slices/user-store.slice";
+import Button from "../components/button.component";
 
 interface FormValues {
   username: string;
@@ -48,12 +48,7 @@ const Login = () => {
             className="border border-1 rounded-md hover:border-blue-500 focus:border-blue-700 p-2 transition-all outline-none"
           />
           <ErrorMessage name="password" component="div" />
-          <button
-            type="submit"
-            className="border rounded-md px-4 py-2 hover:bg-blue-500 hover:text-white transition-all"
-          >
-            Submit
-          </button>
+          <Button text="Login" type="submit" />
         </Form>
       </Formik>
     </div>
