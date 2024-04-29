@@ -3,6 +3,7 @@ import AppRouter from "./routes";
 import { useDispatch } from "react-redux";
 import http, { clearAuthorizationHeader } from "./http";
 import UserStore from "./store/slices/user-store.slice";
+import localStorageConfig from "./config/local-storage.config";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const App = () => {
 
   React.useEffect(() => {
     setLoading(true);
-    if (localStorage.getItem("boilerplate_token")) {
+    if (localStorage.getItem(localStorageConfig.accessToken)) {
       fetchUser();
     } else {
       clearAuthorizationHeader();
