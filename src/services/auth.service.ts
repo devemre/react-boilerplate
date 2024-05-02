@@ -8,8 +8,3 @@ export const loginUser = (username: string, password: string) => {
 
   return response;
 };
-
-export const fetchUser = async () => {
-  const response = await http.get("/auth/me");
-  return response.data;
-};

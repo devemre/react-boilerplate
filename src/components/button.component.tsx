@@ -5,6 +5,7 @@ type ButtonProps = {
   onClick?: () => void;
   type?: React.ButtonHTMLAttributes<HTMLButtonElement>["type"];
 };
+
 const Button = (props: ButtonProps) => {
   return (
     <button

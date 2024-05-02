@@ -27,7 +27,10 @@ const Login = () => {
     }
   };
 
-  const initialValues: FormValues = { username: "", password: "" };
+  const initialValues: FormValues = {
+    username: "kminchelle",
+    password: "0lelplR",
+  };
 
   return (
     <div className="flex flex-col justify-center items-center gap-4 min-h-screen">

@@ -12,12 +12,10 @@ const http = axios.create({
 });
 
 http.interceptors.request.use((config) => {
-  console.log("request", config);
   return config;
 });
 
 http.interceptors.response.use((response) => {
-  console.log("response", response);
   return response;
 });
 
