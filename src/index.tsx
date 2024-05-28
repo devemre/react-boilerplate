@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import { Provider } from "react-redux";
 import AppStore from "./store";
+import AuthWrapper from "./auth/auth-wrapper";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -11,7 +12,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={AppStore.store}>
-      <App />
+      <AuthWrapper>
+        <App />
+      </AuthWrapper>
     </Provider>
   </React.StrictMode>
 );
